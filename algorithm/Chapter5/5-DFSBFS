@@ -1,0 +1,42 @@
+def DFS(graph, v, visited):
+  visited[v] = True
+  print( v, end = ' ')
+  for i in graph[v]:
+    if not visited[i]:
+      DFS( graph, i, visited)
+graph = [
+  [],
+  [2,3,8],
+  [1,7],
+  [4,5],
+  [3,5],
+  [3,4],
+  [7],
+  [2,6,8],
+  [1,7]
+]
+
+visited = [False] * 9
+
+DFS( graph, 1, visited)
+
+print(' ')
+
+from collections import deque
+
+visited = [False] * 9
+
+def BFS( graph, v, visited):
+  visited[v] = True
+  queue = deque()
+  queue.append(v)
+
+  while queue:
+    n = queue.popleft()
+    print(n,end=' ')
+    for i in graph[n]:
+      if not visited[i]:
+        queue.append(i)
+        visited[i] = True
+
+BFS( graph, 1, visited)
